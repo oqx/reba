@@ -31,15 +31,15 @@ This will symlink the binary globally, exposing the `reba` command in your local
 
 ## Usage
 ```
--v, --version  Show version number                                   [boolean]
-  --name, -n     First argument-- name of component.
-                    [string] [required] [default: "HamburgerNetwork"]
-  --prefix, -p   Prefixed name of monorepo (i.e. @babel)
-                    [string] [default: "@generic"]
-  --default, -d  Determines whether component has a default export or named
-                 export.
-                    [boolean] [default: true]
-  -h, --help     Show help                                             [boolean]
+-v, --version  Show version number 
+
+--name, -n     First argument-- name of component. [string] [required] [default: "HamburgerNetwork"]
+                    
+--prefix, -p   Prefixed name of monorepo (i.e. @babel) [string] [default: "@generic"]
+                    
+--default, -d  Determines whether component has a default export or named export. [boolean] [default: true]
+                    
+-h, --help     Show help
 ```
 
 ## Component Tech
