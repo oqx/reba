@@ -13,7 +13,7 @@ export const DEFAULT_EXPORT = 'export default React.memo(_Component)'
 export const DESTRUCTURED_EXPORT =
     'export const Component = React.memo(_Component)'
 
-export const ASSETS_PATH = `${process.cwd()}/dist/assets`
+export const ASSETS_PATH = `${__dirname}/assets`
 
 export const BABEL_CONFIG = `${ASSETS_PATH}/.babelrc`
 
