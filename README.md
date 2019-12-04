@@ -13,7 +13,7 @@ A Lerna companion CLI for generating pattern library components.
 ##  What is Reba?
 Configuration is big, harry, and scary. That's why I created Reba -- to remove that step entirely from the component creation process for pattern libraries. Or at the very least, to handle the bulk of it. 
 
-Reba generated components that are ready to be shipped to an `npm registry` out-of-the-box.
+Reba generates components that are ready to be shipped to an `npm registry` out-of-the-box.
 
 Each Reba generated component ships with an .npmignore and builds with a type declarations file, so component consumers will get a node module with only a `dist` upon install, and inherit the types you define by default without any configuration on their end.
 
@@ -31,15 +31,15 @@ This will symlink the binary globally, exposing the `reba` command in your local
 
 ## Usage
 ```
--v, --version  Show version number                                   [boolean]
-  --name, -n     First argument-- name of component.
-                    [string] [required] [default: "HamburgerNetwork"]
-  --prefix, -p   Prefixed name of monorepo (i.e. @babel)
-                    [string] [default: "@generic"]
-  --default, -d  Determines whether component has a default export or named
-                 export.
-                    [boolean] [default: true]
-  -h, --help     Show help                                             [boolean]
+-v, --version  Show version number 
+
+--name, -n     First argument-- name of component. [string] [required] [default: "HamburgerNetwork"]
+                    
+--prefix, -p   Prefixed name of monorepo (i.e. @babel) [string] [default: "@generic"]
+                    
+--default, -d  Determines whether component has a default export or named export. [boolean] [default: true]
+                    
+-h, --help     Show help
 ```
 
 ## Component Tech
