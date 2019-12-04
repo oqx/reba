@@ -1,9 +1,8 @@
 # Reba CLI 
----
+
 A Lerna companion CLI for generating pattern library components.
 
 ## Component Tech
----
 
 #  Reba CLI
 A Lerna companion CLI for generating pattern library components.
@@ -57,7 +56,7 @@ Yes. `sass-loader` is used, and styles are encapsulated with [React scoped CSS](
 
 ---
 ### Typescript
-Yes.
+Each component will generate with typescript.
 
 ---
 
