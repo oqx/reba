@@ -72,27 +72,6 @@ const writeExampleRoot: fromTypes.Composable = async params => {
 }
 
 /**
- * Writes sass file to component src dir. It's the equivelent of copying the file,
- * albeit this is cross-browser without additional dependencies.
- *
- * @param {YargsArgs} params YargsArgs
- * @returns {YargsArgs} params
- */
-const writeScopedSCSS: fromTypes.Composable = async params => {
-    if (isPromise(params)) {
-        params = await params
-    }
-    const writePath = `${params.name}/src/`
-    try {
-        const data = await fs.readFile(fromConstants.SASS_PATH, 'utf8')
-        await writeFile(writePath, 'styles.local.scss', data)
-    } catch (err) {
-        throw `writeScopedSCSS Error: ${err.stack}`
-    }
-    return params
-}
-
-/**
  * Copies boilerplate spec file to component src dir and adds the proper
  * imports based on user defined input 'default'.
  *
@@ -136,7 +115,6 @@ const writeReactTests: fromTypes.Composable = async params => {
  */
 export const writeReactFiles = compose(
     writeReactTests,
-    writeScopedSCSS,
     writeReactComponent,
     writeExampleRoot
 )

@@ -15,7 +15,7 @@ import { compose } from './utils'
  */
 export const generateComponent = compose(
     fromValidators.onComplete,
-    fromConfigs.writeConfigs,
+    fromConfigs.writeUnmodifiedFilesToDest,
     fromHTML.writeIndexHTML,
     fromPackage.writePackageJson,
     fromReact.writeReactFiles,
