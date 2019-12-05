@@ -9,7 +9,7 @@
  * Lerna directory convention of <root>/packages/<component-name>. If
  * you have an irregular directory structure, this won't work.
  *
- * @example reba --name Heading --default false --prefix @myrepo
+ * @example reba --name Heading --default false --prefix @myrepo --typescript false
  *
  */
 import yargs from 'yargs'
@@ -27,15 +27,14 @@ const args: fromTypes.YargsArgs = yargs
     .describe('v', 'show version information')
     .alias('h', 'help')
     .help('help')
-    .usage('Usage: $0 -n panel -p @monorepo -d false')
+    .usage('Usage: $0 --name Heading --default false --prefix @myrepo --typescript false')
     .showHelpOnFail(true, 'Specify --help for available options')
     .option('name', {
         alias: 'n',
         describe: 'First argument-- name of component.',
         type: 'string' /* array | boolean | string */,
         nargs: 1,
-        default: 'HamburgerNetwork',
-        demand: true
+        demand: '--name argument required.'
     })
     .option('prefix', {
         alias: 'p',
@@ -51,16 +50,21 @@ const args: fromTypes.YargsArgs = yargs
         type: 'boolean' /* array | boolean | string */,
         nargs: 1,
         default: true
+    })    
+    .option('typescript', {
+        alias: 't',
+        describe:
+            'Generates a typescript component.',
+        type: 'boolean' /* array | boolean | string */,
+        nargs: 1,
+        default: true
     }).argv as fromTypes.YargsArgs
 
 /**
  * Tries to generate component, and catches errors if need be.
  */
-try {
-    // Capitalize first letter of component name.
-    args.name = capitalize(args.name)
-    // Run generation funcs.
-    generateComponent(args)
-} catch (err) {
-    console.log(chalk.bold.red(err))
-}
+// Capitalize first letter of component name.
+args.name = capitalize(args.name)
+// Run generation funcs.
+generateComponent(args).catch(err => console.log(chalk.bold.red(err)))
+

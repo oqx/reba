@@ -1,10 +1,8 @@
-import * as fromConfigs from './configs'
 import * as fromPackage from './package'
 import * as fromPaths from './paths'
-import * as fromReact from './react'
-import * as fromHTML from './html'
+import * as fromInterpolate from './interpolate'
 import * as fromValidators from './validators'
-import { compose } from './utils'
+import { compose } from './functional'
 
 /**
  * Handles component generation operations, and creates all
@@ -15,10 +13,8 @@ import { compose } from './utils'
  */
 export const generateComponent = compose(
     fromValidators.onComplete,
-    fromConfigs.writeUnmodifiedFilesToDest,
-    fromHTML.writeIndexHTML,
+    fromInterpolate.transformFiles,
     fromPackage.writePackageJson,
-    fromReact.writeReactFiles,
     fromPaths.writePathsAndCopy,
     fromValidators.validateName
 )

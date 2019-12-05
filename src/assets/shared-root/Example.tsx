@@ -4,4 +4,4 @@ import { render } from 'react-dom'
 
 const NODE = document.querySelector('#app')
 
-render(<Component name="Harold"/>, NODE)
+render(<%component_name% name="Harold"/>, NODE)

@@ -1,7 +1,8 @@
 import mkdirp from 'mkdirp'
 import copydir from 'copy-dir'
 import { PACKAGES_PATH } from './constants'
-import { compose, isPromise } from './utils'
+import { isPromise } from './utils'
+import { compose } from './functional'
 import * as fromTypes from './types'
 
 /**
