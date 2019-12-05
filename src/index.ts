@@ -1,4 +1,3 @@
-import * as fromPackage from './package'
 import * as fromPaths from './paths'
 import * as fromInterpolate from './interpolate'
 import * as fromValidators from './validators'
@@ -14,7 +13,6 @@ import { compose } from './functional'
 export const generateComponent = compose(
     fromValidators.onComplete,
     fromInterpolate.transformFiles,
-    fromPackage.writePackageJson,
     fromPaths.writePathsAndCopy,
     fromValidators.validateName
 )

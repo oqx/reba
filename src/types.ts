@@ -63,9 +63,11 @@ export interface ReplaceAndWriteFileType {
         Indicates whether typescript component should be generated.
     */
     typescript: boolean
+    prefix: string
 }
 
-export interface ReplaceAndWriteDirType extends Omit<ReplaceAndWriteFileType, 'readPath'> {
+export interface ReplaceAndWriteDirType
+    extends Omit<ReplaceAndWriteFileType, 'readPath'> {
     /*
         Directory where fs.readdir should get file list from.
     */

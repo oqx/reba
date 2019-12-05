@@ -1,5 +1,6 @@
 import mkdirp from 'mkdirp'
 import copydir from 'copy-dir'
+import path from 'path'
 import { PACKAGES_PATH } from './constants'
 import { isPromise } from './utils'
 import { compose } from './functional'
@@ -30,9 +31,10 @@ const copyMocksToPath: fromTypes.Composable = async params => {
     if (isPromise(params)) {
         params = await params
     }
+    const PATH = path.join(__dirname, '..', 'dist', 'assets', '__mocks__')
     try {
         copydir.sync(
-            `${process.cwd()}/dist/assets/__mocks__`,
+            path.join(PATH),
             `${process.cwd()}${PACKAGES_PATH}${params.name}/__mocks__`
         )
     } catch (err) {

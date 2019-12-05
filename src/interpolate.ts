@@ -20,6 +20,7 @@ const handleIndexTemplating: fromTypes.Composable = async params => {
             : fromConstants.JS_TEMPLATE_SRC,
         writePath: fromUtils.getDestSRCPath(params.name),
         default: params.default,
+        prefix: params.prefix,
         name: params.name,
         typescript: params.typescript
     }
@@ -46,6 +47,7 @@ const handleSharedRootTemplating = async params => {
         writePath: fromUtils.getDestRootPath(params.name),
         default: params.default,
         name: params.name,
+        prefix: params.prefix,
         typescript: params.typescript
     }
 
@@ -71,6 +73,7 @@ const handleSharedSrcTemplating = async params => {
         writePath: fromUtils.getDestSRCPath(params.name),
         default: params.default,
         name: params.name,
+        prefix: params.prefix,
         typescript: params.typescript
     }
 
@@ -98,6 +101,7 @@ const handleLanguageStaticTemplating: fromTypes.Composable = async params => {
         writePath: fromUtils.getDestRootPath(params.name),
         default: params.default,
         name: params.name,
+        prefix: params.prefix,
         typescript: params.typescript
     }
 

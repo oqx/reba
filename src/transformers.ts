@@ -109,12 +109,32 @@ const transformExtensions: fromTypes.ComposableTransformer = params => {
 }
 
 /**
+ * Transforms %ext_type% values into jsx/tsx.
+ * @param {TransformerArgs} params
+ * @returns {TransformerArgs}
+ */
+const transformPackageName: fromTypes.ComposableTransformer = params => {
+    if (fromConstants.PACKAGE_NAME_REGEX.test(params.data)) {
+        const data = params.data.replace(
+            fromConstants.PACKAGE_NAME_REGEX,
+            `${params.prefix}/${params.name.toLowerCase()}`
+        )
+        return {
+            ...params,
+            data
+        }
+    }
+    return params
+}
+
+/**
  * Applies transformation functions to file data.
  * @param {TransformerArgs} params
  * @returns {TransformerArgs}
  */
 export const transformPipeline = compose(
     transformName,
+    transformPackageName,
     transformRootImportsToSrc,
     transformExports,
     transformExtensions,

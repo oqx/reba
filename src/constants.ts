@@ -39,3 +39,5 @@ export const IMPORT_REGEX = /%import_type%/g
 export const IMPORT_SRC_REGEX = /%import_src_type%/g
 
 export const EXPORT_REGEX = /%export_type%/g
+
+export const PACKAGE_NAME_REGEX = /%package_name%/g
