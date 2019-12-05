@@ -7,12 +7,12 @@ import * as fromTypes from './types'
  * a file's content as a string, which they're able to transform in some way.
  */
 
- /**
-  * Transforms %export_type% values into actual ES6 exports, either default or named.
-  * @param {TransformerArgs} params 
-  * @returns {TransformerArgs} 
-  */
-const transformExports: fromTypes.ComposableTransformer = (params) => {
+/**
+ * Transforms %export_type% values into actual ES6 exports, either default or named.
+ * @param {TransformerArgs} params
+ * @returns {TransformerArgs}
+ */
+const transformExports: fromTypes.ComposableTransformer = params => {
     if (fromConstants.EXPORT_REGEX.test(params.data)) {
         const data = params.data.replace(
             fromConstants.EXPORT_REGEX,
@@ -28,11 +28,11 @@ const transformExports: fromTypes.ComposableTransformer = (params) => {
     return params
 }
 
- /**
-  * Transforms %import_type% values into actual ES6 imports, either default or named.
-  * @param {TransformerArgs} params 
-  * @returns {TransformerArgs} 
-  */
+/**
+ * Transforms %import_type% values into actual ES6 imports, either default or named.
+ * @param {TransformerArgs} params
+ * @returns {TransformerArgs}
+ */
 const transformImports: fromTypes.ComposableTransformer = params => {
     if (fromConstants.IMPORT_REGEX.test(params.data)) {
         const data = params.data.replace(
@@ -49,16 +49,56 @@ const transformImports: fromTypes.ComposableTransformer = params => {
     return params
 }
 
- /**
-  * Transforms %component_name% values into capitalized --name argument value.
-  * @param {TransformerArgs} params 
-  * @returns {TransformerArgs} 
-  */
+/**
+ * Transforms %import_src_type% values into actual ES6 imports, either default or named.
+ * @param {TransformerArgs} params
+ * @returns {TransformerArgs}
+ */
+const transformRootImportsToSrc: fromTypes.ComposableTransformer = params => {
+    if (fromConstants.IMPORT_SRC_REGEX.test(params.data)) {
+        const data = params.data.replace(
+            fromConstants.IMPORT_SRC_REGEX,
+            params.default
+                ? fromConstants.DEFAULT_IMPORT_SRC
+                : fromConstants.DESTRUCTURED_IMPORT_SRC
+        )
+        return {
+            ...params,
+            data
+        }
+    }
+    return params
+}
+
+/**
+ * Transforms %component_name% values into capitalized --name argument value.
+ * @param {TransformerArgs} params
+ * @returns {TransformerArgs}
+ */
 const transformName: fromTypes.ComposableTransformer = params => {
     if (fromConstants.COMPONENT_NAME_REGEX.test(params.data)) {
         const data = params.data.replace(
             fromConstants.COMPONENT_NAME_REGEX,
             params.name
+        )
+        return {
+            ...params,
+            data
+        }
+    }
+    return params
+}
+
+/**
+ * Transforms %ext_type% values into jsx/tsx.
+ * @param {TransformerArgs} params
+ * @returns {TransformerArgs}
+ */
+const transformExtensions: fromTypes.ComposableTransformer = params => {
+    if (fromConstants.FILE_EXT_REGEX.test(params.data)) {
+        const data = params.data.replace(
+            fromConstants.FILE_EXT_REGEX,
+            params.typescript ? 'tsx' : 'jsx'
         )
         return {
             ...params,
@@ -75,6 +115,8 @@ const transformName: fromTypes.ComposableTransformer = params => {
  */
 export const transformPipeline = compose(
     transformName,
+    transformRootImportsToSrc,
     transformExports,
-    transformImports,
+    transformExtensions,
+    transformImports
 )

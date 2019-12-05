@@ -6,7 +6,7 @@ interface Props {
     name: string
 }
 
-const _%component_name%: React.FunctionComponent<Props> = ({ name }) => (<div className="hello-world">Hello {name}!</div>)
+const _%component_name%: React.FunctionComponent<Props> = ({ name }) => <div className="hello-world">Hello {name}!</div>
 
 _%component_name%.displayName = '%component_name%'
 

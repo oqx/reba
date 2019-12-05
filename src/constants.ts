@@ -4,7 +4,8 @@ export const DEFAULT_IMPORT = "import %component_name% from '.'"
 
 export const DESTRUCTURED_IMPORT = "import { %component_name% } from '.'"
 
-export const DESTRUCTURED_IMPORT_SRC = "import { %component_name% } from './src'"
+export const DESTRUCTURED_IMPORT_SRC =
+    "import { %component_name% } from './src'"
 
 export const DEFAULT_IMPORT_SRC = "import %component_name% from './src'"
 
@@ -21,12 +22,20 @@ export const TS_TEMPLATE_SRC = `${TEMPLATES_PATH}/typescript/src`
 
 export const JS_TEMPLATE_SRC = `${TEMPLATES_PATH}/javascript/src`
 
+export const TS_TEMPLATE_STATIC = `${TEMPLATES_PATH}/typescript/static`
+
+export const JS_TEMPLATE_STATIC = `${TEMPLATES_PATH}/javascript/static`
+
 export const SHARED_ROOT = `${ASSETS_PATH}/shared-root`
 
 export const SHARED_SRC = `${ASSETS_PATH}/shared-src`
 
 export const COMPONENT_NAME_REGEX = /%component_name%/g
 
+export const FILE_EXT_REGEX = /%ext_type%/g
+
 export const IMPORT_REGEX = /%import_type%/g
+
+export const IMPORT_SRC_REGEX = /%import_src_type%/g
 
 export const EXPORT_REGEX = /%export_type%/g

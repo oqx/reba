@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './styles.local.scss'
 
-const _%component_name% = ({ name }) => (<div className="hello-world">Hello {name}!</div>)
+const _%component_name% = ({ name }) => <div className="hello-world">Hello {name}!</div>
 
 _%component_name%.displayName = '%component_name%'
 

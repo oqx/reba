@@ -23,11 +23,13 @@ import * as fromTypes from './types'
  */
 const args: fromTypes.YargsArgs = yargs
     .alias('v', 'version')
-    .version('1')
+    .version('1.0.0')
     .describe('v', 'show version information')
     .alias('h', 'help')
     .help('help')
-    .usage('Usage: $0 --name Heading --default false --prefix @myrepo --typescript false')
+    .usage(
+        'Usage: $0 --name Heading --default false --prefix @myrepo --typescript false'
+    )
     .showHelpOnFail(true, 'Specify --help for available options')
     .option('name', {
         alias: 'n',
@@ -50,11 +52,10 @@ const args: fromTypes.YargsArgs = yargs
         type: 'boolean' /* array | boolean | string */,
         nargs: 1,
         default: true
-    })    
+    })
     .option('typescript', {
         alias: 't',
-        describe:
-            'Generates a typescript component.',
+        describe: 'Generates a typescript component.',
         type: 'boolean' /* array | boolean | string */,
         nargs: 1,
         default: true
@@ -67,4 +68,3 @@ const args: fromTypes.YargsArgs = yargs
 args.name = capitalize(args.name)
 // Run generation funcs.
 generateComponent(args).catch(err => console.log(chalk.bold.red(err)))
-

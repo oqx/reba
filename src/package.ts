@@ -12,6 +12,9 @@ export const writePackageJson = async params => {
         ? await import('./assets/templates/typescript/static/package.json')
         : await import('./assets/templates/javascript/static/package.json')
     pkg.name = `${params.prefix}/${params.name.toLowerCase()}`
-    await fromUtils.writeFile(`${fromUtils.getDestRootPath(params.name)}/package.json`, JSON.stringify(pkg, null, 2))
+    await fromUtils.writeFile(
+        `${fromUtils.getDestRootPath(params.name)}/package.json`,
+        JSON.stringify(pkg, null, 2)
+    )
     return params
 }

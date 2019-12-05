@@ -3,19 +3,21 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const IS_DEV = process.env.NODE_ENV === 'development'
 
-module.exports = {
-    entry: IS_DEV ? './Example.tsx' : './src/index.tsx',
+const externals = {
+    react: 'React',
+    'react-dom': 'ReactDOM'
+}
+
+let webpackConfig = {
+    entry: IS_DEV ? './Example.%ext_type%' : './src/index.%ext_type%',
     output: {
         path: path.join(__dirname, '/dist'),
         filename: 'index.js'
     },
     resolve: {
-        extensions: ['.ts', '.tsx', '.js']
+        extensions: ['.ts', '.tsx', '.js', '.jsx']
     },
-    externals: {
-        react: 'React',
-        'react-dom': 'ReactDOM'
-    },
+
     module: {
         rules: [
             {
@@ -43,3 +45,12 @@ module.exports = {
             })
     ].filter(x => x)
 }
+
+if (!IS_DEV) {
+    webpackConfig = {
+        ...webpackConfig,
+        externals
+    }
+}
+
+module.exports = webpackConfig
