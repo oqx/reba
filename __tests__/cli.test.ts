@@ -1,6 +1,7 @@
 import { exec } from 'child_process'
 import fs from 'fs'
 import path from 'path'
+import { FILE_TESTS } from '../file-runs'
 // @ts-ignore
 import pkge from '../package.json'
 
@@ -24,22 +25,49 @@ describe('CLI Command --name', () => {
             }
         )
     })
+    describe.each(FILE_TESTS)
+})
 
-    test('Should have generated a packages/Button directory.', done => {
-        const PATH = path.resolve('packages', 'Button')
-        expect(fs.existsSync(PATH)).toEqual(true)
-        done()
+describe('CLI Command --name button --default false', () => {
+    test('Should generate log indicating component has been created.', done => {
+        exec(
+            'reba --name button --default false',
+            { encoding: 'utf8' },
+            (err, stdout, stderr) => {
+                expect(stdout.trim()).toEqual(`@generic/button created! 🦄`)
+                done()
+            }
+        )
+    })
+    describe.each(FILE_TESTS)
+})
+
+describe('CLI Command --name button --default false --prefix @hello', () => {
+    test('Should generate log indicating component has been created.', done => {
+        exec(
+            'reba --name button --default false --prefix @hello',
+            { encoding: 'utf8' },
+            (err, stdout, stderr) => {
+                expect(stdout.trim()).toEqual(`@hello/button created! 🦄`)
+                done()
+            }
+        )
     })
 
-    test('Should have generated a packages/Button/__mocks__ directory.', done => {
-        const PATH = path.resolve('packages', 'Button', '__mocks__')
-        expect(fs.existsSync(PATH)).toEqual(true)
-        done()
+    describe.each(FILE_TESTS)
+})
+
+describe('CLI Command --name button --default false --typescript false', () => {
+    test('Should generate log indicating component has been created.', done => {
+        exec(
+            'reba --name button --default false --typescript false',
+            { encoding: 'utf8' },
+            (err, stdout, stderr) => {
+                expect(stdout.trim()).toEqual(`@generic/button created! 🦄`)
+                done()
+            }
+        )
     })
 
-    test('Should have generated a packages/Button/src directory.', done => {
-        const PATH = path.resolve('packages', 'Button', '__mocks__')
-        expect(fs.existsSync(PATH)).toEqual(true)
-        done()
-    })
+    describe.each(FILE_TESTS)
 })
