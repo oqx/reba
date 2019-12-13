@@ -12,6 +12,13 @@
     "postbuild": "npx tsc --declaration --outDir dist/ --emitDeclarationOnly --declarationMap",
     "check-types": "npx tsc"
   },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "registry": "<target-registry>"
+  },
+  "repository": "<your-repo-url>",
   "keywords": [],
   "author": "",
   "license": "ISC",

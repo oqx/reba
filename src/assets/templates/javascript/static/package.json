@@ -9,6 +9,13 @@
     "start": "NODE_ENV=development webpack-dev-server --mode development --open --hot",
     "build": "npx webpack --mode production"
   },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "registry": "<target-registry>"
+  },
+  "repository": "<your-repo-url>",
   "keywords": [],
   "author": "",
   "license": "ISC",

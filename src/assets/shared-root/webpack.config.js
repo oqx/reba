@@ -23,8 +23,7 @@ let webpackConfig = {
     output: {
         path: path.join(__dirname, '/dist'),
         filename: 'index.js',
-        libraryTarget: 'umd',
-        umdNamedDefine: true
+        libraryTarget: 'commonjs2',
     },
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.jsx'],
